@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub 部署指南 - 清迈旅行攻略</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --github-black: #24292e;
+            --github-green: #2ea44f;
+            --github-blue: #0366d6;
+            --github-purple: #6f42c1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #f6f8fa 0%, #e1e4e8 100%);
+            color: #24292e;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        /* GitHub 风格头部 */
+        .github-header {
+            background: var(--github-black);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .github-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="white" opacity="0.05"/></svg>');
+        }
+        
+        .github-logo {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .github-header h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .github-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+        
+        /* 步骤卡片 */
+        .step-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e4e8;
+            transition: transform 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f6f8fa;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--github-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--github-black);
+        }
+        
+        /* 代码块 */
+        .code-block {
+            background: #f6f8fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            overflow-x: auto;
+            border: 1px solid #e1e4e8;
+        }
+        
+        .code-line {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .line-number {
+            color: #6a737d;
+            min-width: 40px;
+            text-align: right;
+            padding-right: 15px;
+            user-select: none;
+        }
+        
+        .code-content {
+            flex: 1;
+        }
+        
+        .comment {
+            color: #6a737d;
+        }
+        
+        .command {
+            color: #24292e;
+        }
+        
+        .highlight {
+            color: var(--github-green);
+            font-weight: 500;
+        }
+        
+        .url {
+            color: var(--github-blue);
+            text-decoration: none;
+        }
+        
+        .url:hover {
+            text-decoration: underline;
+        }
+        
+        /* 文件列表 */
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .file-item {
+            background: #f6f8fa;
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid #e1e4e8;
+            transition: all 0.2s ease;
+        }
+        
+        .file-item:hover {
+            background: #e1e4e8;
+            transform: translateY(-2px);
+        }
+        
+        .file-icon {
+            font-size: 1.5rem;
+            color: var(--github-blue);
+            margin-bottom: 10px;
+        }
+        
+        .file-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            word-break: break-all;
+        }
+        
+        .file-desc {
+            font-size: 0.85rem;
+            color: #6a737d;
+        }
+        
+        /* 按钮 */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn-primary {
+            background: var(--github-green);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2c974b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 164, 79, 0.3);
+        }
+        
+        .btn-secondary {
+            background: var(--github-blue);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #0256c9;
+            transform: translateY(-2px);
+        }
+        
+        /* 状态面板 */
+        .status-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid #e1e4e8;
+        }
+        
+        .status-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--github-black);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .status-ready {
+            background: #dafbe1;
+            color: #1a7f37;
+            border: 1px solid #7ee787;
+        }
+        
+        .status-pending {
+            background: #fff8c5;
+            color: #9a6700;
+            border: 1px solid #f9c513;
+        }
+        
+        .status-error {
+            background: #ffebe9;
+            color: #cf222e;
+            border: 1px solid #ff8182;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .github-header h1 { font-size: 1.8rem; }
+            .file-grid { grid-template-columns: 1fr; }
+        }
+        
+        /* 动画 */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- GitHub 头部 -->
+        <header class="github-header">
+            <div class="github-logo">
+                <i class="fab fa-github"></i>
+            </div>
+            <h1>GitHub 部署指南</h1>
+            <p class="github-subtitle">将清迈旅行攻略部署到 GitHub Pages</p>
+            <div class="status-badge status-ready">
+                <i class="fas fa-check-circle"></i>
+                本地文件已准备就绪
+            </div>
+        </header>
+
+        <!-- 步骤1：GitHub 创建仓库 -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div class="step-title">创建 GitHub 仓库</div>
+            </div>
+            
+            <p>首先，在 GitHub 上创建一个新的仓库：</p>
+            
+            <div class="code-block">
+                <div class="code-line">
+                    <div class="line-number">1</div>
+                    <div class="code-content">
+                        访问 <a href="https://github.com/new" class="url" target="_blank">https://github.com/new</a>
+                    </div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">2</div>
+                    <div class="code-content comment"># 填写仓库信息：</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">3</div>
+                    <div class="code-content">
+                        • <span class="highlight">Repository name</span>: chiangmai-travel-guide
+                    </div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">4</div>
+                    <div class="code-content">
+                        • <span class="highlight">Description</span>: 清迈旅行攻略 - 包含导航功能的网页
+                    </div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">5</div>
+                    <div class="code-content">
+                        • <span class="highlight">Public</span> (公开仓库)
+                    </div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">6</div>
+                    <div class="code-content">
+                        • <span class="highlight">Initialize with README</span>: ✓ 勾选
+                    </div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">7</div>
+                    <div class="code-content">
+                        • <span class="highlight">Add .gitignore</span>: None
+                    </div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">8</div>
+                    <div class="code-content">
+                        • <span class="highlight">License</span>: MIT License
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://github.com/new" class="btn btn-primary" target="_blank">
+                <i class="fas fa-plus-circle"></i>
+                创建新仓库
+            </a>
+        </div>
+
+        <!-- 步骤2：配置 Git -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div class="step-title">配置 Git 用户信息</div>
+            </div>
+            
+            <p>在终端中运行以下命令配置你的 Git 信息：</p>
+            
+            <div class="code-block">
+                <div class="code-line">
+                    <div class="line-number">1</div>
+                    <div class="code-content comment"># 设置用户名和邮箱</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">2</div>
+                    <div class="code-content command">git config --global user.name "你的名字"</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">3</div>
+                    <div class="code-content command">git config --global user.email "你的邮箱"</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">4</div>
+                    <div class="code-content comment"># 检查配置</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">5</div>
+                    <div class="code-content command">git config --list</div>
+                </div>
+            </div>
+            
+            <p>或者直接运行这个一键配置脚本：</p>
+            
+            <div class="code-block">
+                <div class="code-line">
+                    <div class="line-number">1</div>
+                    <div class="code-content command">cd /Users/wangliang/.openclaw/workspace</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">2</div>
+                    <div class="code-content command">git config user.name "王亮"</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">3</div>
+                    <div class="code-content command">git config user.email "你的邮箱@example.com"</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 步骤3：添加远程仓库 -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <div class="step-title">添加远程仓库并推送</div>
+            </div>
+            
+            <p>创建仓库后，复制仓库的 SSH 或 HTTPS URL，然后运行：</p>
+            
+            <div class="code-block">
+                <div class="code-line">
+                    <div class="line-number">1</div>
+                    <div class="code-content comment"># 进入工作目录</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">2</div>
+                    <div class="code-content command">cd /Users/wangliang/.openclaw/workspace</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">3</div>
+                    <div class="code-content comment"># 添加远程仓库（替换 YOUR_URL）</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">4</div>
+                    <div class="code-content command">git remote add origin https://github.com/你的用户名/chiangmai-travel-guide.git</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">5</div>
+                    <div class="code-content comment"># 或者使用 SSH（推荐）</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">6</div>
+                    <div class="code-content command">git remote add origin git@github.com:你的用户名/chiangmai-travel-guide.git</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">7</div>
+                    <div class="code-content comment"># 推送到 GitHub</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">8</div>
+                    <div class="code-content command">git push -u origin master</div>
+                </div>
+            </div>
+            
+            <p>如果遇到错误，可能需要先拉取远程更改：</p>
+            
+            <div class="code-block">
+                <div class="code-line">
+                    <div class="line-number">1</div>
+                    <div class="code-content command">git pull origin master --allow-unrelated-histories</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">2</div>
+                    <div class="code-content command">git push -u origin master</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 步骤4：启用 GitHub Pages -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">4</div>
+                <div class="step-title">启用 GitHub Pages</div>
+            </div>
+            
+            <p>推送成功后，启用 GitHub Pages 功能：</p>
+            
+            <div class="code-block">
+                <div class="code-line">
+                    <div class="line-number">1</div>
+                    <div class="code-content">
+                        1. 访问你的仓库页面
+                    </div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">2</div>
+                    <div class="code-content">
+                        2. 点击 <span class="highlight">Settings</span> 标签
+                    </div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">3</div>
+                    <div class="code-content">
+                        3. 左侧选择 <span class="highlight">Pages</span>
+                    </div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">4</div>
+                    <div class="code-content">
+                        4. 在 <span class="highlight">Source</span> 选择 <span class="highlight">Deploy from a branch</span>
+                    </div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">5</div>
+                    <div class="code-content">
+                        5. 分支选择 <span class="highlight">master</span>，文件夹选择 <span class="highlight">/(root)</span>
+                    </div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">6</div>
+                    <div class="code-content">
+                        6. 点击 <span class="highlight">Save</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p>等待几分钟后，你的网站将在以下地址上线：</p>
+            
+            <div class="code-block">
+                <div class="code-line">
+                    <div class="line-number">1</div>
+                    <div class="code-content">
+                        https://你的用户名.github.io/chiangmai-travel-guide/
+                    </div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">2</div>
+                    <div class="code-content comment"># 或者直接访问具体文件：</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">3</div>
+                    <div class="code-content">
+                        https://你的用户名.github.io/chiangmai-travel-guide/chiangmai-tour-beautiful.html
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://pages.github.com/" class="btn btn-secondary" target="_blank">
+                <i class="fas fa-book"></i>
+                GitHub Pages 文档
+            </a>
+        </div>
+
+        <!-- 文件列表 -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">5</div>
+                <div class="step-title">包含的文件</div>
+            </div>
+            
+            <p>以下文件将被推送到 GitHub：</p>
+            
+            <div class="file-grid">
+                <div class="file-item">
+                    <div class="file-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="file-name">chiangmai-tour-beautiful.html</div>
+                    <div class="file-desc">美观设计版（推荐）</div>
+                </div>
+                
+                <div class="file-item">
+                    <div class="file-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="file-name">chiangmai-play-tour.html</div>
+                    <div class="file-desc">游玩攻略详细版</div>
+                </div>
+                
+                <div class="file-item">
+                    <div class="file-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="file-name">chiangmai-trip-mobile.html</div>
+                    <div class="file-desc">手机导航版</div>
+                </div>
+                
+                <div class="file-item">
+                    <div class="file-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="file-name">school-tour-schedule.html</div>
+                    <div class="file-desc">学校参观桌面版</div>
+                </div>
+                
+                <div class="file-item">
+                    <div class="file-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="file-name">README-travel.html</div>
+                    <div class="file-desc">访问指南</div>
+                </div>
+                
+                <div class="file-item">
+                    <div class="file-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="file-name">github-deploy.html</div>
+                    <div class="file-desc">部署指南（当前页面）</div>
+                </div>
+            </div>
+            
+            <p>当前 Git 状态：</p>
+            <div class="code-block">
+                <div class="code-line">
+                    <div class="line-number">1</div>
+                    <div class="code-content command"># 提交历史</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">2</div>
+                    <div class="code-content">055bc02 - 添加旅行攻略访问指南页面</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">3</div>
+                    <div class="code-content">d882b26 - 添加清迈旅行攻略网页 - 包含导航功能的美观设计</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 状态面板 -->
+        <div class="status-panel">
+            <div class="status-title">
+                <i class="fas fa-server"></i>
+                部署状态
+            </div>
+            
+            <div class="status-badge status-ready">
+                <i class="fas fa-check-circle"></i>
+                本地文件已准备
+            </div>
+            
+            <div class="status-badge status-pending pulse">
+                <i class="fas fa-sync-alt"></i>
+                等待 GitHub 配置
+            </div>
+            
+            <div class="status-badge status-pending">
+                <i class="fas fa-cloud-upload-alt"></i>
+                等待推送
+            </div>
+            
+            <div class="status-badge status-pending">
+                <i class="fas fa-globe"></i>
+                等待 GitHub Pages 激活
+            </div>
+            
+            <p style="margin-top: 20px; color: #6a737d;">
+                <i class="fas fa-info-circle"></i>
+                部署完成后，你的旅行攻略将在全球可访问，并且所有导航功能都能正常工作。
+            </p>
+        </div>
+
+        <!-- 一键脚本 -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">6</div>
+                <div class="step-title">一键部署脚本</div>
+            </div>
+            
+            <p>复制以下脚本到终端运行，可以自动完成大部分步骤：</p>
+            
+            <div class="code-block">
+                <div class="code-line">
+                    <div class="line-number">1</div>
+                    <div class="code-content comment">#!/bin/bash</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">2</div>
+                    <div class="code-content comment"># 清迈旅行攻略一键部署脚本</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">3</div>
+                    <div class="code-content command">cd /Users/wangliang/.openclaw/workspace</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">4</div>
+                    <div class="code-content command">echo "🚀 开始部署清迈旅行攻略到 GitHub..."</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">5</div>
+                    <div class="code-content command">echo ""</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">6</div>
+                    <div class="code-content command">echo "📦 添加文件到 Git..."</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">7</div>
+                    <div class="code-content command">git add *.html</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">8</div>
+                    <div class="code-content command">echo "✅ 文件已添加"</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">9</div>
+                    <div class="code-content command">echo ""</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">10</div>
+                    <div class="code-content command">echo "📝 请输入你的 GitHub 仓库 URL："</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">11</div>
+                    <div class="code-content command">read -p "URL: " repo_url</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">12</div>
+                    <div class="code-content command">echo ""</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">13</div>
+                    <div class="code-content command">echo "🔗 添加远程仓库..."</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">14</div>
+                    <div class="code-content command">git remote add origin "$repo_url"</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">15</div>
+                    <div class="code-content command">echo "✅ 远程仓库已添加"</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">16</div>
+                    <div class="code-content command">echo ""</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">17</div>
+                    <div class="code-content command">echo "🚀 推送到 GitHub..."</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">18</div>
+                    <div class="code-content command">git push -u origin master</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">19</div>
+                    <div class="code-content command">echo ""</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">20</div>
+                    <div class="code-content command">echo "🎉 部署完成！"</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">21</div>
+                    <div class="code-content command">echo "🌐 访问 https://你的用户名.github.io/chiangmai-travel-guide/"</div>
+                </div>
+            </div>
+            
+            <p>保存为 <code>deploy.sh</code> 并运行：</p>
+            
+            <div class="code-block">
+                <div class="code-line">
+                    <div class="line-number">1</div>
+                    <div class="code-content command">chmod +x deploy.sh</div>
+                </div>
+                <div class="code-line">
+                    <div class="line-number">2</div>
+                    <div class="code-content command">./deploy.sh</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <footer style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e1e4e8; color: #6a737d;">
+            <p>
+                <i class="fas fa-code"></i>
+                由 OpenClaw AI 助手生成 | 
+                <i class="fas fa-calendar-alt"></i>
+                2026年3月22日 20:26
+            </p>
+            <p>
+                <i class="fas fa-folder-open"></i>
+                文件位置: /Users/wangliang/.openclaw/workspace/github-deploy.html
+            </p>
+            <p style="margin-top: 10px;">
+                <a href="http://localhost:8080/chiangmai-tour-beautiful.html" class="url" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
+                    预览旅行攻略
+                </a>
+                | 
+                <a href="http://localhost:8080/README-travel.html" class="url" target="_blank">
+                    <i class="fas fa-book"></i>
+                    查看访问指南
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // 添加交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 复制代码功能
+            const codeBlocks = document.querySelectorAll('.code-block');
+            codeBlocks.forEach(block => {
+                block.addEventListener('click', function() {
+                    const text = this.innerText;
+                    navigator.clipboard.writeText(text).then(() => {
+                        const original = this.style.boxShadow;
+                        this.style.boxShadow = '0 0 0 3px rgba(46, 164, 79, 0.3)';
+                        setTimeout(() => {
+                            this.style.boxShadow = original;
+                        }, 500);
+                    });
+                });
+            });
+            
+            // 更新状态时间
+            const timeElement = document.createElement('div');
+            timeElement.style.cssText = 'text-align: center; margin-top: 10px; color: #6a737d; font-size: 0.9rem;';
+            timeElement.innerHTML = `<i class="far fa-clock"></i> 页面加载时间: ${new Date().toLocaleString('zh-CN')}`;
+            document.querySelector('footer').appendChild(timeElement);
+            
+            // 自动滚动到顶部
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+</html>
