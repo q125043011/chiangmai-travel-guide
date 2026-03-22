@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清迈旅行攻略 - 访问指南</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid #667eea;
+        }
+        .card h2 {
+            color: #333;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card h2 i {
+            color: #667eea;
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+        }
+        .file-list li {
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+        }
+        .file-list li a {
+            color: #2196F3;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .file-list li a:hover {
+            text-decoration: underline;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-right: 8px;
+        }
+        .badge-new { background: #e3f2fd; color: #1976d2; }
+        .badge-mobile { background: #f3e5f5; color: #7b1fa2; }
+        .badge-desktop { background: #e8f5e9; color: #388e3c; }
+        .code {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .feature {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .feature i {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .qr-code {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .qr-code img {
+            max-width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            background: white;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <h1>🌴 清迈旅行攻略</h1>
+        <p class="subtitle">访问指南 & 文件说明</p>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-rocket"></i> 快速访问</h2>
+        <p>本地服务器已启动，可以通过以下方式访问：</p>
+        
+        <div class="code">
+            <strong>本地访问：</strong><br>
+            http://localhost:8080/chiangmai-tour-beautiful.html
+        </div>
+        
+        <div class="code">
+            <strong>如果使用其他设备：</strong><br>
+            http://[你的IP地址]:8080/chiangmai-tour-beautiful.html
+        </div>
+        
+        <p>要获取你的IP地址，在终端运行：</p>
+        <div class="code">ifconfig | grep "inet " | grep -v 127.0.0.1</div>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-file-alt"></i> 可用文件</h2>
+        <ul class="file-list">
+            <li>
+                <span class="badge badge-new">推荐</span>
+                <a href="chiangmai-tour-beautiful.html">chiangmai-tour-beautiful.html</a>
+                <br><small>美观设计版，包含完整导航功能</small>
+            </li>
+            <li>
+                <a href="chiangmai-play-tour.html">chiangmai-play-tour.html</a>
+                <br><small>游玩攻略详细版</small>
+            </li>
+            <li>
+                <span class="badge badge-mobile">手机优化</span>
+                <a href="chiangmai-trip-mobile.html">chiangmai-trip-mobile.html</a>
+                <br><small>手机导航版（学校+游玩）</small>
+            </li>
+            <li>
+                <span class="badge badge-desktop">桌面版</span>
+                <a href="school-tour-schedule.html">school-tour-schedule.html</a>
+                <br><small>学校参观行程表</small>
+            </li>
+            <li>
+                <a href="school-tour-mobile.html">school-tour-mobile.html</a>
+                <br><small>学校参观手机版</small>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-star"></i> 主要功能</h2>
+        <div class="feature-grid">
+            <div class="feature">
+                <i class="fas fa-map-marked-alt"></i>
+                <h3>一键导航</h3>
+                <p>点击按钮直接跳转Google Maps</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>响应式设计</h3>
+                <p>完美适配手机和电脑</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-palette"></i>
+                <h3>美观界面</h3>
+                <p>现代设计，渐变色彩</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-info-circle"></i>
+                <h3>完整信息</h3>
+                <p>地址、时间、预算、提示</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-map-signs"></i> 行程概览</h2>
+        <h3>第一天（3月28日）</h3>
+        <ul>
+            <li>🍳 09:00-13:00 泰式烹饪体验</li>
+            <li>🛍️ 14:00-17:00 瓦洛洛市场</li>
+            <li>🌙 19:00-22:00 周六夜市</li>
+        </ul>
+        
+        <h3>第二天（3月29日）</h3>
+        <ul>
+            <li>🐘 08:30-12:30 大象伦理体验</li>
+            <li>🎨 14:00-17:00 手工体验</li>
+            <li>🛕 17:30-20:00 素贴寺日落</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-code-branch"></i> Git 状态</h2>
+        <p>所有文件已提交到本地Git仓库：</p>
+        <div class="code">
+            提交ID: d882b26<br>
+            提交信息: "添加清迈旅行攻略网页 - 包含导航功能的美观设计"<br>
+            文件数: 5个HTML文件
+        </div>
+        <p>要推送到GitHub或其他远程仓库：</p>
+        <div class="code">
+            git remote add origin [你的仓库URL]<br>
+            git push -u origin master
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-server"></i> 服务器管理</h2>
+        <p>当前本地服务器运行在端口 8080</p>
+        <div class="code">
+            # 停止服务器<br>
+            pkill -f "python3 -m http.server 8080"<br><br>
+            # 重新启动<br>
+            cd /Users/wangliang/.openclaw/workspace<br>
+            python3 -m http.server 8080 &
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; color: #666; font-size: 0.9rem;">
+        <p>🦞 由 OpenClaw AI 助手创建 | 更新时间: 2026年3月22日 20:17</p>
+        <p>📁 文件位置: /Users/wangliang/.openclaw/workspace/</p>
+    </div>
+</body>
+</html>
