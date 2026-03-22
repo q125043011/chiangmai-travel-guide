@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清迈深度游攻略 | 3月28-29日</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #ff6b6b;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --info: #2196F3;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 头部 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="white" opacity="0.05"/></svg>');
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+        
+        .date-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* 卡片布局 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            padding: 25px 25px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .card-body {
+            padding: 20px 25px;
+        }
+        
+        .time-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .location-item {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .location-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        
+        .location-address {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        
+        /* 按钮 */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-navigate {
+            background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+            color: white;
+            margin-top: 10px;
+        }
+        
+        .btn-navigate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
+        }
+        
+        /* 信息面板 */
+        .info-panel {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .panel-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .info-item {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .info-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+        
+        .info-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        /* 标签 */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .tag-cooking { background: #ffeaea; color: #e91e63; }
+        .tag-market { background: #f3e5f5; color: #9c27b0; }
+        .tag-elephant { background: #fff3e0; color: #ff9800; }
+        .tag-craft { background: #e0f2f1; color: #009688; }
+        .tag-temple { background: #efebe9; color: #795548; }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            .container { padding: 15px; }
+        }
+        
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="hero fade-in">
+            <h1>🌴 清迈深度游攻略</h1>
+            <p class="hero-subtitle">3月28-29日 · 两天沉浸式体验</p>
+            <div class="date-badge">
+                <i class="fas fa-calendar-alt"></i>
+                <span>2026年3月28日 - 3月29日</span>
+            </div>
+        </header>
+
+        <!-- 第一天 -->
+        <section class="fade-in delay-1">
+            <h2 class="panel-title"><i class="fas fa-sun"></i> 第一天 · 3月28日（周五）</h2>
+            <div class="card-grid">
+                <!-- 烹饪体验 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #e91e63 0%, #ff4081 100%);">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <span>泰式烹饪体验</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="time-badge">
+                            <i class="far fa-clock"></i>
+                            <span>09:00 - 13:00 (4小时)</span>
+                        </div>
+                        <p>学习制作正宗泰式菜肴，包含市场参观、食材选购、烹饪教学和品尝。</p>
+                        
+                        <div class="location-item">
+                            <div class="location-name">Thai Farm Cooking School</div>
+                            <div class="location-address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                38/8 Soi 9, Moonmuang Road, Sripoom, Mueang Chiang Mai, Thailand
+                            </div>
+                            <div class="tags">
+                                <span class="tag tag-cooking"><i class="fas fa-leaf"></i> 农场参观</span>
+                                <span class="tag tag-cooking"><i class="fas fa-shopping-basket"></i> 市场体验</span>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Thai+Farm+Cooking+School+Chiang+Mai" 
+                               class="btn btn-navigate" target="_blank">
+                                <i class="fas fa-map-marked-alt"></i> 导航到Thai Farm
+                            </a>
+                        </div>
+                        
+                        <div class="location-item">
+                            <div class="location-name">Asia Scenic Thai Cooking School</div>
+                            <div class="location-address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                31 Soi 5, Ratchadamnoen Road, Sripoom, Mueang Chiang Mai, Thailand
+                            </div>
+                            <div class="tags">
+                                <span class="tag tag-cooking"><i class="fas fa-city"></i> 老城区中心</span>
+                                <span class="tag tag-cooking"><i class="fas fa-car"></i> 交通便利</span>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Asia+Scenic+Thai+Cooking+School+Chiang+Mai" 
+                               class="btn btn-navigate" target="_blank">
+                                <i class="fas fa-map-marked-alt"></i> 导航到Asia Scenic
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 市场探索 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #9c27b0 0%, #ba68c8 100%);">
+                                <i class="fas fa-shopping-bag"></i>
+                            </div>
+                            <span>瓦洛洛市场 & 唐人街</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="time-badge">
+                            <i class="far fa-clock"></i>
+                            <span>14:00 - 17:00 (3小时)</span>
+                        </div>
+                        <p>清迈最大的传统市场，体验当地生活，购买特产、香料、手工艺品，品尝地道小吃。</p>
+                        
+                        <div class="location-item">
+                            <div class="location-name">Warorot Market (Kad Luang)</div>
+                            <div class="location-address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                90 Wichayanon Road, Tambon Chang Moi, Mueang Chiang Mai, Thailand
+                            </div>
+                            <div class="tags">
+                                <span class="tag tag-market"><i class="fas fa-utensils"></i> 地道小吃</span>
+                                <span class="tag tag-market"><i class="fas fa-gift"></i> 特产购物</span>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Warorot+Market+Chiang+Mai" 
+                               class="btn btn-navigate" target="_blank">
+                                <i class="fas fa-map-marked-alt"></i> 导航到瓦洛洛市场
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 夜市 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #673ab7 0%, #9575cd 100%);">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <span>周六步行街夜市</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="time-badge">
+                            <i class="far fa-clock"></i>
+                            <span>19:00 - 22:00 (3小时)</span>
+                        </div>
+                        <p>如果3月28日是周六，强烈推荐周六步行街夜市（Wualai Walking Street）。</p>
+                        
+                        <div class="location-item">
+                            <div class="location-name">Wualai Walking Street</div>
+                            <div class="location-address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Wualai Road, Tambon Haiya, Mueang Chiang Mai, Thailand
+                            </div>
+                            <div class="tags">
+                                <span class="tag tag-market"><i class="fas fa-star"></i> 周六限定</span>
+                                <span class="tag tag-market"><i class="fas fa-handshake"></i> 手工艺品</span>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Wualai+Walking+Street+Chiang+Mai" 
+                               class="btn btn-navigate" target="_blank">
+                                <i class="fas fa-map-marked-alt"></i> 导航到周六夜市
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二天 -->
+        <section class="fade-in delay-2">
+            <h2 class="panel-title"><i class="fas fa-sun"></i> 第二天 · 3月29日（周六）</h2>
+            <div class="card-grid">
+                <!-- 大象体验 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%);">
+                                <i class="fas fa-elephant"></i>
+                            </div>
+                            <span>大象伦理体验</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="time-badge">
+                            <i class="far fa-clock"></i>
+                            <span>08:30 - 12:30 (4小时)</span>
+                        </div>
+                        <p>选择无骑乘、无表演的大象保护营，与大象进行伦理互动：喂食、洗澡、观察自然行为。</p>
+                        
+                        <div class="location-item">
+                            <div class="location-name">Elephant Nature Park</div>
+                            <div class="location-address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                1 Ratmakka Road, Phra Sing, Mueang Chiang Mai, Thailand
+                            </div>
+                            <div class="tags">
+                                <span class="tag tag-elephant"><i class="fas fa-heart"></i> 最著名保护营</span>
+                                <span class="tag tag-elephant"><i class="fas fa-car"></i> 车程1小时</span>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Elephant+Nature+Park+Chiang+Mai" 
+                               class="btn btn-navigate" target="_blank">
+                                <i class="fas fa-map-marked-alt"></i> 导航到ENP
+                            </a>
+                        </div>
+                        
+                        <div class="location-item">
+                            <div class="location-name">Patara Elephant Farm</div>
+                            <div class="location-address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Tha Wang Tan, Saraphi District, Chiang Mai, Thailand
+                            </div>
+                            <div class="tags">
+                                <span class="tag tag-elephant"><i class="fas fa-user-md"></i> 大象医生体验</span>
+                                <span class="tag tag-elephant"><i class="fas fa-hand-holding-heart"></i> 伦理互动</span>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Patara+Elephant+Farm+Chiang+Mai" 
+                               class="btn btn-navigate" target="_blank">
+                                <i class="fas fa-map-marked-alt"></i> 导航到Patara
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 手工体验 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #009688 0%, #4db6ac 100%);">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <span>清迈手工体验</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="time-badge">
+                            <i class="far fa-clock"></i>
+                            <span>14:00 - 17:00 (3小时)</span>
+                        </div>
+                        <p>体验泰北传统手工艺，制作属于自己的纪念品。</p>
+                        
+                        <div class="location-item">
+                            <div class="location-name">Baan Kang Wat 艺术家村</div>
+                            <div class="location-address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                123/1 Moo 3, Suthep, Mueang Chiang Mai, Thailand
+                            </div>
+                            <div class="tags">
+                                <span class="tag tag-craft"><i class="fas fa-palette"></i> 创意市集</span>
+                                <span class="tag tag-craft"><i class="fas fa-users"></i> 艺术家社区</span>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Baan+Kang+Wat+Chiang+Mai" 
+                               class="btn btn-navigate" target="_blank">
+                                <i class="fas fa-map-marked-alt"></i> 导航到Baan Kang Wat
+                            </a>
+                        </div>
+                        
+                        <div class="location-item">
+                            <div class="location-name">Bo Sang Umbrella Village (伞村)</div>
+                            <div class="location-address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                111/2 Moo 3, Bo Sang, San Kamphaeng, Chiang Mai, Thailand
+                            </div>
+                            <div class="tags">
+                                <span class="tag tag-craft"><i class="fas fa-umbrella"></i> 传统纸伞</span>
+                                <span class="tag tag-craft"><i class="fas fa-car"></i> 车程30分钟</span>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Bo+Sang+Umbrella+Village+Chiang+Mai" 
+                               class="btn btn-navigate" target="_blank">
+                                <i class="fas fa-map-marked-alt"></i> 导航到伞村
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 寺庙日落 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #795548 0%, #a1887f 100%);">
+                                <i class="fas fa-torii-gate"></i>
+                            </div>
+                            <span>素贴寺日落 + 山顶晚餐</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="time-badge">
+                            <i class="far fa-clock"></i>
+                            <span>17:30 - 20:00 (2.5小时)</span>
+                        </div>
+                        <p>前往素贴山观看日落，参观双龙寺，在山顶餐厅享用晚餐。</p>
+                        
+                        <div class="location-item">
+                            <div class="location-name">Wat Phra That Doi Suthep (素贴寺)</div>
+                            <div class="location-address">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Mueang Chiang Mai District, Chiang Mai 50200, Thailand
+                            </div>
+                            <div class="tags">
+                                <span class="tag tag-temple"><i class="fas fa-mountain"></i> 海拔1,676米</span>
+                                <span class="tag tag-temple"><i class="fas fa-eye"></i> 清迈全景</span>
+                            </div>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Wat+Phra+That+Doi+Suthep" 
+                               class="btn btn-navigate" target="_blank">
+                                <i class="fas fa-map-marked-alt"></i> 导航到素贴寺
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 实用信息 -->
+        <section class="fade-in delay-3">
+            <div class="info-panel">
+                <h2 class="panel-title"><i class="fas fa-info-circle"></i> 实用信息</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label"><i class="fas fa-car"></i> 交通建议</div>
+                        <div class="info-value">
+                            • Grab/Bolt打车<br>
+                            • 红色双条车 (20-40泰铢)<br>
+                            • 郊区包车 (1,500-2,500泰铢/天)
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label"><i class="fas fa-wallet"></i> 预算参考 (2天)</div>
+                        <div class="info-value">
+                            • 住宿: 800-1,500泰铢/晚<br>
+                            • 餐饮: 500-800泰铢/天<br>
+                            • 活动: 3,000-5,000泰铢<br>
+                            • 总计: 6,000-12,000泰铢
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label"><i class="fas fa-mobile-alt"></i> 必备APP</div>
+                        <div class="info-value">
+                            • Grab/Bolt (打车)<br>
+                            • Google Maps (导航)<br>
+                            • Google Translate (翻译)<br>
+                            • Klook (预订活动)
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label"><i class="fas fa-exclamation-triangle"></i> 注意事项</div>
+                        <div class="info-value">
+                            • 3月底热季 (30-35°C)<br>
+                            • 寺庙着装得体<br>
+                            • 准备小额现金<br>
+                            • 购买旅游保险
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 紧急联系 -->
+        <section class="fade-in delay-3">
+            <div class="info-panel">
+                <h2 class="panel-title"><i class="fas fa-phone-alt"></i> 紧急联系</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">旅游警察</div>
+                        <div class="info-value">1155 (英语服务)</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">急救</div>
+                        <div class="info-value">1669</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">火警</div>
+                        <div class="info-value">199</div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-label">中国驻清迈总领馆</div>
+                        <div class="info-value">+66-81-882-3283</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>📁 文件保存位置: /Users/wangliang/.openclaw/workspace/chiangmai-tour-beautiful.html</p>
+            <p>🕒 更新时间: 2026年3月22日 20:17</p>
+            <p>🎨 设计: OpenClaw AI Assistant | 🦞 隐耀小龙虾</p>
+        </footer>
+    </div>
+
+    <script>
+        // 添加简单的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为导航按钮添加点击反馈
+            const navButtons = document.querySelectorAll('.btn-navigate');
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    console.log('导航到:', this.href);
+                    // 可以在这里添加分析代码
+                });
+            });
+            
+            // 卡片悬停效果增强
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // 显示当前时间
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            console.log('页面加载时间:', now.toLocaleDateString('zh-CN', options));
+        });
+    </script>
+</body>
+</html>

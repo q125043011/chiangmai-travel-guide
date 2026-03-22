@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清迈国际学校参观行程表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 15px;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 头部 */
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 25px 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .header-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .header h1 {
+            color: #333;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .header-subtitle {
+            color: #888;
+            font-size: 13px;
+        }
+        
+        .header-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #e0e0e0;
+            text-align: left;
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        
+        .info-label {
+            color: #888;
+            width: 70px;
+            flex-shrink: 0;
+        }
+        
+        .info-value {
+            color: #333;
+            font-weight: 500;
+        }
+        
+        /* 日期卡片 */
+        .day-card {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .day-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .day-date {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .day-weekday {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* 时间段 */
+        .time-section {
+            padding: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .time-section:last-child {
+            border-bottom: none;
+        }
+        
+        .time-label {
+            display: inline-flex;
+            align-items: center;
+            background: #f5f5f5;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .time-label-icon {
+            margin-right: 6px;
+            font-size: 14px;
+        }
+        
+        /* 学校卡片 */
+        .school-item {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 12px;
+        }
+        
+        .school-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .school-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        
+        .school-name-wrap {
+            flex: 1;
+        }
+        
+        .school-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 3px;
+        }
+        
+        .school-en {
+            font-size: 11px;
+            color: #888;
+        }
+        
+        .school-status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+        
+        .status-confirmed {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-tentative {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .school-time {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        
+        .school-time-icon {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+        
+        .school-contact {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+            padding-top: 10px;
+            border-top: 1px dashed #e0e0e0;
+        }
+        
+        .school-note {
+            font-size: 11px;
+            color: #e67e22;
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: #fef3e2;
+            border-radius: 8px;
+        }
+        
+        /* 提示卡片 */
+        .tips-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .tips-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tips-title-icon {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .tip-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .tip-icon {
+            margin-right: 10px;
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            font-size: 11px;
+            padding: 20px 0;
+        }
+        
+        /* 打印优化 */
+        @media print {
+            body {
+                background: white;
+                padding: 10px;
+            }
+            
+            .day-card, .header, .tips-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+            
+            .day-header {
+                background: #667eea !important;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+        
+        /* 空状态 */
+        .empty-slot {
+            text-align: center;
+            padding: 30px 20px;
+            color: #999;
+            font-size: 13px;
+        }
+        
+        .empty-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部信息 -->
+        <div class="header">
+            <div class="header-icon">🏫</div>
+            <h1>清迈国际学校参观行程表</h1>
+            <div class="header-subtitle">Chiang Mai International School Tour</div>
+            
+            <div class="header-info">
+                <div class="info-row">
+                    <span class="info-label">家长：</span>
+                    <span class="info-value">王亮</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">学生：</span>
+                    <span class="info-value">陈俊希 (Grade 5)</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">电话：</span>
+                    <span class="info-value">+86 13938287993</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3月30日 周一 -->
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-date">3月30日</div>
+                <div class="day-weekday">周一 · Monday</div>
+            </div>
+            
+            <!-- 上午 -->
+            <div class="time-section">
+                <div class="time-label">
+                    <span class="time-label-icon">☀️</span>
+                    上午 Morning
+                </div>
+                
+                <div class="school-item">
+                    <div class="school-header">
+                        <div class="school-name-wrap">
+                            <div class="school-name">NIS</div>
+                            <div class="school-en">Nakornpayap International School</div>
+                        </div>
+                        <span class="school-status status-confirmed">已确认</span>
+                    </div>
+                    <div class="school-time">
+                        <span class="school-time-icon">🕐</span>
+                        10:00-11:00（北京时间）
+                    </div>
+                    <div class="school-contact">
+                        📧 admissions@nis.ac.th<br>
+                        📞 (+66) 53 110 680 ext. 104
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 下午 -->
+            <div class="time-section">
+                <div class="time-label">
+                    <span class="time-label-icon">🌤</span>
+                    下午 Afternoon
+                </div>
+                
+                <div class="school-item">
+                    <div class="school-header">
+                        <div class="school-name-wrap">
+                            <div class="school-name">LANNA</div>
+                            <div class="school-en">Lanna International School</div>
+                        </div>
+                        <span class="school-status status-confirmed">已确认</span>
+                    </div>
+                    <div class="school-time">
+                        <span class="school-time-icon">🕐</span>
+                        14:00（曼谷时间）
+                    </div>
+                    <div class="school-contact">
+                        📧 admissions_grace@lannaist.ac.th<br>
+                        📞 +66(0) 52 000 838<br>
+                        👤 Grace Hu<br>
+                        📍 Gate 1 主办公室，时长约1小时
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3月31日 周二 -->
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-date">3月31日</div>
+                <div class="day-weekday">周二 · Tuesday</div>
+            </div>
+            
+            <!-- 上午 -->
+            <div class="time-section">
+                <div class="time-label">
+                    <span class="time-label-icon">☀️</span>
+                    上午 Morning
+                </div>
+                
+                <div class="school-item">
+                    <div class="school-header">
+                        <div class="school-name-wrap">
+                            <div class="school-name">Prem</div>
+                            <div class="school-en">Prem International School</div>
+                        </div>
+                        <span class="school-status status-confirmed">已确认</span>
+                    </div>
+                    <div class="school-time">
+                        <span class="school-time-icon">🕐</span>
+                        10:00-11:00（曼谷时间）
+                    </div>
+                    <div class="school-contact">
+                        📧 admissions@ptis.ac.th<br>
+                        📞 0925569391
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 下午 -->
+            <div class="time-section">
+                <div class="time-label">
+                    <span class="time-label-icon">🌤</span>
+                    下午 Afternoon
+                </div>
+                
+                <div class="school-item">
+                    <div class="school-header">
+                        <div class="school-name-wrap">
+                            <div class="school-name">CMIS</div>
+                            <div class="school-en">Chiang Mai International School</div>
+                        </div>
+                        <span class="school-status status-tentative">暂定</span>
+                    </div>
+                    <div class="school-time">
+                        <span class="school-time-icon">🕐</span>
+                        14:00（曼谷时间）
+                    </div>
+                    <div class="school-contact">
+                        待确认联系方式
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4月1日 周三 -->
+        <div class="day-card">
+            <div class="day-header">
+                <div class="day-date">4月1日</div>
+                <div class="day-weekday">周三 · Wednesday</div>
+            </div>
+            
+            <!-- 上午 -->
+            <div class="time-section">
+                <div class="time-label">
+                    <span class="time-label-icon">☀️</span>
+                    上午 Morning
+                </div>
+                
+                <div class="school-item">
+                    <div class="school-header">
+                        <div class="school-name-wrap">
+                            <div class="school-name">UCIS</div>
+                            <div class="school-en">Unity Concord International School</div>
+                        </div>
+                        <span class="school-status status-confirmed">已确认</span>
+                    </div>
+                    <div class="school-time">
+                        <span class="school-time-icon">🕐</span>
+                        10:00 → 9:00（申请改期中）
+                    </div>
+                    <div class="school-contact">
+                        📧 info@ucis.ac.th<br>
+                        📞 052 135061<br>
+                        👤 Tommy Lee Creamer
+                    </div>
+                </div>
+                
+                <div class="school-item">
+                    <div class="school-header">
+                        <div class="school-name-wrap">
+                            <div class="school-name">Panyaden</div>
+                            <div class="school-en">Panyaden International School</div>
+                        </div>
+                        <span class="school-status status-confirmed">已确认</span>
+                    </div>
+                    <div class="school-time">
+                        <span class="school-time-icon">🕐</span>
+                        10:45-11:00（曼谷时间）
+                    </div>
+                    <div class="school-contact">
+                        📧 admissions@panyaden.ac.th
+                    </div>
+                    <div class="school-note">
+                        ⚠️ 仅15分钟简短参观，EAL项目已满
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 下午 -->
+            <div class="time-section">
+                <div class="time-label">
+                    <span class="time-label-icon">🌤</span>
+                    下午 Afternoon
+                </div>
+                <div class="empty-slot">
+                    <div class="empty-icon">🌴</div>
+                    <div>自由安排 / Free Time</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 待预约学校 -->
+        <div class="day-card">
+            <div class="day-header" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="day-date">待预约</div>
+                <div class="day-weekday">Pending Schools</div>
+            </div>
+            
+            <div class="time-section">
+                <div class="school-item">
+                    <div class="school-header">
+                        <div class="school-name-wrap">
+                            <div class="school-name">APIS</div>
+                            <div class="school-en">American Pacific International School</div>
+                        </div>
+                        <span class="school-status status-pending">需预约</span>
+                    </div>
+                    <div class="school-time">
+                        <span class="school-time-icon">🕐</span>
+                        工作日 8:30-16:30
+                    </div>
+                    <div class="school-contact">
+                        📧 admissions@apis.ac.th<br>
+                        📍 158/1 Moo3, Ban Pong, Hang Dong
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 重要提示 -->
+        <div class="tips-card">
+            <div class="tips-title">
+                <span class="tips-title-icon">📋</span>
+                重要提醒
+            </div>
+            <div class="tip-item">
+                <span class="tip-icon">⏰</span>
+                <span>请提前15分钟到达学校办理访客登记</span>
+            </div>
+            <div class="tip-item">
+                <span class="tip-icon">🆔</span>
+                <span>携带护照以便入校登记</span>
+            </div>
+            <div class="tip-item">
+                <span class="tip-icon">👔</span>
+                <span>建议着装得体，给学校留下良好印象</span>
+            </div>
+            <div class="tip-item">
+                <span class="tip-icon">📝</span>
+                <span>可准备问题清单：课程、师资、课外活动等</span>
+            </div>
+            <div class="tip-item">
+                <span class="tip-icon">⚠️</span>
+                <span>注意时差：清迈比北京时间晚1小时</span>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            <p>行程表更新于 2026年3月21日</p>
+            <p>数据来源：学校邮件确认</p>
+        </div>
+    </div>
+</body>
+</html>

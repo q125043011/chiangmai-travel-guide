@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清迈行程 - 导航版</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #f5f5f5; 
+            padding: 10px;
+            font-size: 15px;
+        }
+        .container { max-width: 100%; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .header h1 { font-size: 22px; margin-bottom: 5px; }
+        .header p { font-size: 13px; opacity: 0.9; }
+        
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .item:last-child { border-bottom: none; }
+        .item-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .item-en {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+        .item-time {
+            color: #667eea;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+        .item-status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            margin-bottom: 6px;
+        }
+        .status-confirmed { background: #e8f5e9; color: #2e7d32; }
+        .status-pending { background: #fff3e0; color: #e65100; }
+        
+        .address-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 8px;
+        }
+        .address-label {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+        .address-text {
+            color: #333;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #4285f4;
+            color: white;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .nav-button:active { background: #3367d6; }
+        
+        .contact-info {
+            font-size: 12px;
+            color: #666;
+            margin-top: 6px;
+        }
+        
+        .tips-box {
+            background: #fff8e1;
+            border-left: 3px solid #ffc107;
+            padding: 12px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 10px;
+        }
+        .tips-title {
+            font-weight: 600;
+            color: #f57c00;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+        .tips-list {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .category-school { border-left: 4px solid #667eea; }
+        .category-food { border-left: 4px solid #e91e63; }
+        .category-market { border-left: 4px solid #9c27b0; }
+        .category-craft { border-left: 4px solid #009688; }
+        .category-elephant { border-left: 4px solid #ff9800; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ 清迈行程导航版</h1>
+            <p>点击地址可直接跳转Google Maps导航</p>
+        </div>
+
+        <!-- 学校行程 -->
+        <div class="section category-school">
+            <div class="section-title">🏫 学校参观 (3月30日-4月1日)</div>
+            
+            <div class="item">
+                <div class="item-time">3月30日 10:00-11:00</div>
+                <div class="item-name">NIS 国际学校</div>
+                <div class="item-en">Nakornpayap International School</div>
+                <span class="item-status status-confirmed">✅ 已确认</span>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">240 Moo 10, San Phi Suea, Mueang Chiang Mai District, Chiang Mai 50300</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Nakornpayap+International+School+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航到NIS
+                    </a>
+                </div>
+                <div class="contact-info">📞 (+66) 53 110 680 ext. 104</div>
+            </div>
+
+            <div class="item">
+                <div class="item-time">3月30日 14:00</div>
+                <div class="item-name">LANNA 国际学校</div>
+                <div class="item-en">Lanna International School</div>
+                <span class="item-status status-confirmed">✅ 已确认</span>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">300/1 Moo 2, Nong Phueng, Saraphi District, Chiang Mai 50140<br><small>📍 Gate 1 主办公室</small></div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Lanna+International+School+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航到LANNA
+                    </a>
+                </div>
+                <div class="contact-info">📞 +66(0) 52 000 838 | 联系人：Grace Hu</div>
+            </div>
+
+            <div class="item">
+                <div class="item-time">3月30日 16:00</div>
+                <div class="item-name">APIS 国际学校</div>
+                <div class="item-en">American Pacific International School</div>
+                <span class="item-status status-confirmed">✅ 已确认</span>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">158/1 Moo 3, Ban Pong, Hang Dong District, Chiang Mai 50230</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=American+Pacific+International+School+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航到APIS
+                    </a>
+                </div>
+                <div class="contact-info">👦👧 两个孩子：10岁(G4) + 12岁(G5)</div>
+            </div>
+
+            <div class="item">
+                <div class="item-time">3月31日 10:00-11:00</div>
+                <div class="item-name">Prem 国际学校</div>
+                <div class="item-en">Prem International School</div>
+                <span class="item-status status-confirmed">✅ 已确认</span>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">234 Moo 3, Tambon Huai Sai, Amphoe Mae Rim, Chiang Mai 50180</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Prem+International+School+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航到Prem
+                    </a>
+                </div>
+                <div class="contact-info">📞 0925569391</div>
+            </div>
+
+            <div class="item">
+                <div class="item-time">3月31日 14:00</div>
+                <div class="item-name">CMIS 国际学校</div>
+                <div class="item-en">Chiang Mai International School</div>
+                <span class="item-status status-pending">⏳ 暂定</span>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">13 Chetupon Rd, Wat Ket, Mueang Chiang Mai District, Chiang Mai 50000</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Chiang+Mai+International+School" class="nav-button" target="_blank">
+                        🧭 导航到CMIS
+                    </a>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-time">4月1日 10:00</div>
+                <div class="item-name">UCIS 国际学校</div>
+                <div class="item-en">Unity Concord International School</div>
+                <span class="item-status status-confirmed">✅ 已确认</span>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">Moo 8, 288/1 San Pu Loei, Doi Saket District, Chiang Mai 50220</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Unity+Concord+International+School+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航到UCIS
+                    </a>
+                </div>
+                <div class="contact-info">📞 052 135061 | 联系人：Tommy Lee Creamer</div>
+            </div>
+
+            <div class="item">
+                <div class="item-time">4月1日 10:45-11:00</div>
+                <div class="item-name">Panyaden 国际学校</div>
+                <div class="item-en">Panyaden International School</div>
+                <span class="item-status status-confirmed">✅ 已确认 (15分钟)</span>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">218/1 Moo 2, Namphrae, Hang Dong District, Chiang Mai 50230</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Panyaden+International+School+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航到Panyaden
+                    </a>
+                </div>
+                <div class="contact-info">⚠️ EAL项目已满，高年级需较强英语水平</div>
+            </div>
+        </div>
+
+        <!-- 烹饪体验 -->
+        <div class="section category-food">
+            <div class="section-title">🍳 烹饪体验 / 胡闹厨房</div>
+            
+            <div class="item">
+                <div class="item-name">Asia Scenic Thai Cooking School</div>
+                <div class="item-en">最受欢迎的泰式烹饪学校</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">31 Ratchapakhinai Rd, Si Phum, Mueang Chiang Mai District, Chiang Mai 50200</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Asia+Scenic+Thai+Cooking+School+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+                <div class="contact-info">💡 含市场采买食材环节，半天/全天可选</div>
+            </div>
+
+            <div class="item">
+                <div class="item-name">Thai Farm Cooking School</div>
+                <div class="item-en">有机农场烹饪体验</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">Moo 4, 185/3 Wang Tan, Hang Dong District, Chiang Mai 50230</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Thai+Farm+Cooking+School+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+                <div class="contact-info">💡 环境优美，含酒店接送</div>
+            </div>
+
+            <div class="item">
+                <div class="item-name">Pantawan Cooking School</div>
+                <div class="item-en">高端泰式烹饪课程</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">38 Soi 9, Nimmanahaeminda Road, Suthep, Mueang Chiang Mai District, Chiang Mai 50200</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Pantawan+Cooking+School+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 市场 -->
+        <div class="section category-market">
+            <div class="section-title">🛒 著名市场</div>
+            
+            <div class="item">
+                <div class="item-name">周日夜市</div>
+                <div class="item-en">Sunday Walking Street</div>
+                <div class="item-time">每周日 16:00-22:00</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">Rachadamnoen Road, Si Phum, Mueang Chiang Mai District, Chiang Mai 50200<br><small>古城主街，从塔佩门到帕辛寺</small></div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Sunday+Walking+Street+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+                <div class="contact-info">规模最大，手工艺品、银器、木雕</div>
+            </div>
+
+            <div class="item">
+                <div class="item-name">周六夜市</div>
+                <div class="item-en">Saturday Walking Street</div>
+                <div class="item-time">每周六 16:00-22:00</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">Wua Lai Road, Haiya, Mueang Chiang Mai District, Chiang Mai 50100<br><small>南门瓦莱路</small></div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Saturday+Walking+Street+Wua+Lai+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+                <div class="contact-info">手工饰品、皮具</div>
+            </div>
+
+            <div class="item">
+                <div class="item-name">JJ Market</div>
+                <div class="item-en">Jing Jai Market</div>
+                <div class="item-time">周六日 06:00-14:00</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">45 Atsadathon Rd, Pa Tan, Mueang Chiang Mai District, Chiang Mai 50300</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Jing+Jai+Market+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+                <div class="contact-info">周末早晨文创市集，独立设计师手作</div>
+            </div>
+
+            <div class="item">
+                <div class="item-name">Baan Kang Wat 艺术村</div>
+                <div class="item-en">Baan Kang Wat Art Village</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">123/1 Moo 5, Suthep, Mueang Chiang Mai District, Chiang Mai 50200<br><small>靠近素贴寺</small></div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Baan+Kang+Wat+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+                <div class="contact-info">陶艺、编织、绘画手工坊聚集</div>
+            </div>
+
+            <div class="item">
+                <div class="item-name">长康路夜市</div>
+                <div class="item-en">Night Bazaar</div>
+                <div class="item-time">每天 18:00-22:30</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">Chang Klan Road, Chang Khlan, Mueang Chiang Mai District, Chiang Mai 50100</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Chiang+Mai+Night+Bazaar" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+                <div class="contact-info">每天开放，偏商业化但选择多</div>
+            </div>
+        </div>
+
+        <!-- 手工体验 -->
+        <div class="section category-craft">
+            <div class="section-title">🎨 手工体验 / DIY</div>
+            
+            <div class="item">
+                <div class="item-name">Baan Kang Wat 艺术村</div>
+                <div class="item-en">陶艺、扎染、银饰制作</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">123/1 Moo 5, Suthep, Mueang Chiang Mai District, Chiang Mai 50200</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Baan+Kang+Wat+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-name">Siam Celadon</div>
+                <div class="item-en">青瓷制作体验</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">155 Moo 4, San Klang, San Kamphaeng District, Chiang Mai 50130</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Siam+Celadon+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-name">Pansawan Leather</div>
+                <div class="item-en">手工皮具体验</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">Nimmanahaeminda Road, Suthep, Mueang Chiang Mai District, Chiang Mai 50200</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Pansawan+Leather+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 大象体验 -->
+        <div class="section category-elephant">
+            <div class="section-title">🐘 大象体验 (不推荐骑大象)</div>
+            
+            <div class="item">
+                <div class="item-name">Elephant Nature Park</div>
+                <div class="item-en">最知名的救援大象保护营</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">209/2 Sridom Chai Rd, Ban Kao Makha, Mae Taeng District, Chiang Mai 50150</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Elephant+Nature+Park+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+                <div class="contact-info">🚗 车程约1-1.5小时 | 需提前预约<br>✅ 无骑行，喂食、洗澡、观察</div>
+            </div>
+
+            <div class="item">
+                <div class="item-name">Elephant Jungle Sanctuary</div>
+                <div class="item-en">与大象互动、泥浆浴</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">119/10 Thapene Road, Suthep, Mueang Chiang Mai District, Chiang Mai 50200</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Elephant+Jungle+Sanctuary+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+                <div class="contact-info">✅ 无骑行，含酒店接送</div>
+            </div>
+
+            <div class="item">
+                <div class="item-name">Into the Wild Elephant Camp</div>
+                <div class="item-en">小型家庭式，深度体验</div>
+                <div class="address-box">
+                    <div class="address-label">📍 地址 Address</div>
+                    <div class="address-text">Mae Taeng District, Chiang Mai 50150</div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Into+the+Wild+Elephant+Camp+Chiang+Mai" class="nav-button" target="_blank">
+                        🧭 导航
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 重要提示 -->
+        <div class="section">
+            <div class="tips-box">
+                <div class="tips-title">⚠️ 重要提示</div>
+                <div class="tips-list">
+                    • 清迈使用曼谷时间 (GMT+7)，比北京时间晚1小时<br>
+                    • 所有地址点击"导航"按钮可直接打开Google Maps<br>
+                    • 大象体验需提前预约，当天可能满员<br>
+                    • 夜市只有周末开放，注意时间安排<br>
+                    • 建议下载离线地图，部分区域信号不佳
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; color: #999; font-size: 12px; padding: 20px;">
+            更新于 2026年3月22日
+        </div>
+    </div>
+</body>
+</html>

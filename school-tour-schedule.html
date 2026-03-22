@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>清迈国际学校参观行程表</title>
+    <style>
+        @media print {
+            body { 
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact;
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2c5aa0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #2c5aa0;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+        .info-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .info-section h2 {
+            color: #2c5aa0;
+            font-size: 16px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 10px;
+            font-size: 14px;
+        }
+        .info-label {
+            color: #666;
+            font-weight: bold;
+        }
+        .info-value {
+            color: #333;
+        }
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+        .schedule-table th {
+            background: #2c5aa0;
+            color: white;
+            padding: 15px 10px;
+            text-align: left;
+            font-size: 14px;
+        }
+        .schedule-table td {
+            padding: 15px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+            vertical-align: top;
+        }
+        .schedule-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .schedule-table tr:hover {
+            background: #e3f2fd;
+        }
+        .date-cell {
+            font-weight: bold;
+            color: #2c5aa0;
+            white-space: nowrap;
+        }
+        .time-cell {
+            color: #666;
+            font-size: 13px;
+        }
+        .school-name {
+            font-weight: bold;
+            color: #333;
+            font-size: 15px;
+        }
+        .school-en {
+            color: #999;
+            font-size: 12px;
+        }
+        .contact-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+        .contact-box strong {
+            color: #e65100;
+        }
+        .notes-section {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin-top: 25px;
+        }
+        .notes-section h3 {
+            color: #2e7d32;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .notes-section ul {
+            margin-left: 20px;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        .notes-section li {
+            color: #333;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #999;
+            font-size: 12px;
+        }
+        .status-pending {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        .status-confirmed {
+            color: #4caf50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏫 清迈行程表</h1>
+            <div class="subtitle">Chiang Mai Trip Schedule - 学校参观 + 游玩</div>
+        </div>
+
+        <div class="info-section">
+            <h2>👤 基本信息 / Basic Information</h2>
+            <div class="info-grid">
+                <span class="info-label">家长姓名：</span>
+                <span class="info-value">王亮 (Liang Wang)</span>
+                
+                <span class="info-label">联系电话：</span>
+                <span class="info-value">+86 13938287993</span>
+                
+                <span class="info-label">邮箱地址：</span>
+                <span class="info-value">125043011@qq.com</span>
+                
+                <span class="info-label">学生姓名：</span>
+                <span class="info-value">陈俊希 (Junxi Chen)</span>
+                
+                <span class="info-label">申请年级：</span>
+                <span class="info-value">Grade 5 (2026-2027学年)</span>
+            </div>
+        </div>
+
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th style="width: 15%;">日期</th>
+                    <th style="width: 12%;">时间</th>
+                    <th style="width: 25%;">学校名称</th>
+                    <th style="width: 20%;">状态</th>
+                    <th style="width: 28%;">联系方式</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="date-cell">3月30日<br><span style="font-size:12px;color:#666;">周一</span></td>
+                    <td class="time-cell">10:00-11:00<br>北京时间</td>
+                    <td>
+                        <div class="school-name">NIS</div>
+                        <div class="school-en">Nakornpayap International School</div>
+                    </td>
+                    <td><span class="status-confirmed">✅ 已确认</span></td>
+                    <td>
+                        📧 admissions@nis.ac.th<br>
+                        📞 (+66) 53 110 680 ext. 104
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date-cell">3月31日<br><span style="font-size:12px;color:#666;">周二</span></td>
+                    <td class="time-cell">10:00-11:00<br>曼谷时间</td>
+                    <td>
+                        <div class="school-name">Prem</div>
+                        <div class="school-en">Prem International School</div>
+                    </td>
+                    <td><span class="status-confirmed">✅ 已确认</span></td>
+                    <td>
+                        📧 admissions@ptis.ac.th<br>
+                        📞 0925569391
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date-cell">3月31日<br><span style="font-size:12px;color:#666;">周二</span></td>
+                    <td class="time-cell">14:00<br>曼谷时间</td>
+                    <td>
+                        <div class="school-name">CMIS</div>
+                        <div class="school-en">Chiang Mai International School</div>
+                    </td>
+                    <td><span class="status-pending">⏳ 暂定</span></td>
+                    <td>
+                        待确认联系方式
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date-cell">4月1日<br><span style="font-size:12px;color:#666;">周二</span></td>
+                    <td class="time-cell">10:45-11:00<br>曼谷时间</td>
+                    <td>
+                        <div class="school-name">PANYADEN</div>
+                        <div class="school-en">Panyaden International School</div>
+                    </td>
+                    <td><span class="status-confirmed">✅ 已确认</span><br><span style="font-size:11px;color:#666;">(15分钟简短参观)</span></td>
+                    <td>
+                        📧 admissions@panyaden.ac.th<br>
+                        注：EAL项目已满，高年级需较强英语水平
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date-cell">4月1日<br><span style="font-size:12px;color:#666;">周二</span></td>
+                    <td class="time-cell">10:00<br>曼谷时间</td>
+                    <td>
+                        <div class="school-name">UCIS</div>
+                        <div class="school-en">Unity Concord International School</div>
+                    </td>
+                    <td><span class="status-confirmed">✅ 已确认</span></td>
+                    <td>
+                        📧 info@ucis.ac.th<br>
+                        📞 052 135061<br>
+                        联系人：Tommy Lee Creamer
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date-cell">3月30日<br><span style="font-size:12px;color:#666;">周一</span></td>
+                    <td class="time-cell">16:00<br>曼谷时间</td>
+                    <td>
+                        <div class="school-name">APIS</div>
+                        <div class="school-en">American Pacific International School</div>
+                    </td>
+                    <td><span class="status-confirmed">✅ 已确认</span></td>
+                    <td>
+                        📧 admissions@apis.ac.th<br>
+                        📍 地址：158/1 Moo3, Ban Pong, Hang Dong<br>
+                        <span style="font-size:11px;color:#666;">两个孩子：10岁(G4) + 12岁(G5)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date-cell">3月30日<br><span style="font-size:12px;color:#666;">周一</span></td>
+                    <td class="time-cell">14:00<br>曼谷时间</td>
+                    <td>
+                        <div class="school-name">LANNA</div>
+                        <div class="school-en">Lanna International School</div>
+                    </td>
+                    <td><span class="status-confirmed">✅ 已确认</span></td>
+                    <td>
+                        📧 admissions_grace@lannaist.ac.th<br>
+                        📞 +66(0) 52 000 838<br>
+                        联系人：Grace Hu<br>
+                        地点：Gate 1 主办公室<br>
+                        时长：约1小时
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="contact-box">
+            <strong>📋 改期/取消须知：</strong><br>
+            • NIS：如需改期或取消，请提前24小时联系 admissions@nis.ac.th 或致电 (+66) 53 110 680 ext. 104<br>
+            • Prem：可通过 Google Calendar 链接取消或重新预约<br>
+            • Lanna：如需改期请联系 admissions_grace@lannaist.ac.th 或致电 +66(0) 52 000 838<br>
+            • UCIS：如需改期请联系 info@ucis.ac.th 或致电 052 135061<br>
+            • Panyaden：时间较短(15分钟)，请准时到达
+        </div>
+
+        <div class="notes-section">
+            <h3>📝 重要提醒 / Important Notes</h3>
+            <ul>
+                <li>⏰ 请提前15分钟到达学校，以便办理访客登记手续</li>
+                <li>📱 携带身份证件（护照）以便入校登记</li>
+                <li>👔 建议着装得体，给学校留下良好印象</li>
+                <li>📝 可准备问题清单，了解课程设置、师资力量、课外活动等</li>
+                <li>📸 参观时可拍照记录（需征得学校同意）</li>
+                <li>🚗 提前规划交通路线，清迈部分学校位置较偏远</li>
+                <li>⚠️ 注意时差：清迈使用曼谷时间（GMT+7），比北京时间晚1小时</li>
+            </ul>
+        </div>
+
+        <div class="notes-section" style="background: #fff3e0; border-left-color: #ff9800;">
+            <h3 style="color: #e65100;">⚠️ 重要提示 / Important Notice</h3>
+            <ul>
+                <li><strong>Panyaden</strong>：4月1日仅15分钟简短参观，且EAL项目已满，高年级需要较强英语水平</li>
+                <li><strong>APIS</strong>：3月30日下午4:00已确认，美式课程，注重领导力培养</li>
+                <li><strong>Lanna</strong>：需通过官网预约系统提交申请，可加招生办Grace微信中文咨询</li>
+            </ul>
+        </div>
+
+        <div class="notes-section" style="background: #e3f2fd; border-left-color: #2196f3;">
+            <h3 style="color: #1565c0;">🏫 学校简介 / School Brief</h3>
+            <ul>
+                <li><strong>NIS</strong>：成立于1993年，清迈老牌国际学校，提供美式课程</li>
+                <li><strong>Prem</strong>：IB世界学校，提供PYP、MYP、IBDP、IBCP四个IB项目，寄宿设施完善</li>
+                <li><strong>CMIS</strong>：清迈国际学校，历史悠久，提供美式课程</li>
+                <li><strong>UCIS</strong>：新兴国际学校，设施现代化，提供英语支持项目</li>
+                <li><strong>PANYADEN</strong>：环保理念学校，建筑采用竹结构，EAL项目已满</li>
+                <li><strong>LANNA</strong>：英制课程，学术成绩优异，提供英语支持项目</li>
+                <li><strong>APIS</strong>：美式课程，注重领导力培养，工作日灵活参观</li>
+            </ul>
+        </div>
+
+        <div class="notes-section" style="background: #fce4ec; border-left-color: #e91e63;">
+            <h3 style="color: #c2185b;">🍳 胡闹厨房 / 烹饪体验</h3>
+            <ul>
+                <li><strong>Asia Scenic Thai Cooking School</strong>：最受欢迎的泰式烹饪学校，含市场采买食材环节</li>
+                <li><strong>Thai Farm Cooking School</strong>：有机农场烹饪体验，环境优美</li>
+                <li><strong>Pantawan Cooking School</strong>：高端泰式烹饪课程，适合深度体验</li>
+                <li>💡 建议：大部分课程含酒店接送，半天或全天可选</li>
+            </ul>
+        </div>
+
+        <div class="notes-section" style="background: #f3e5f5; border-left-color: #9c27b0;">
+            <h3 style="color: #7b1fa2;">🛒 著名市场 / 购物推荐</h3>
+            <ul>
+                <li><strong>周日夜市</strong> (Sunday Walking Street)：古城主街，规模最大，手工艺品、银器、木雕</li>
+                <li><strong>周六夜市</strong> (Saturday Walking Street)：南门瓦莱路，手工饰品、皮具</li>
+                <li><strong>JJ Market</strong> (Jing Jai Market)：周末早晨文创市集，独立设计师手作</li>
+                <li><strong>Baan Kang Wat</strong>：艺术村，陶艺、编织、绘画手工坊聚集</li>
+                <li><strong>长康路夜市</strong> (Night Bazaar)：每天开放，偏商业化但选择多</li>
+            </ul>
+        </div>
+
+        <div class="notes-section" style="background: #e0f2f1; border-left-color: #009688;">
+            <h3 style="color: #00796b;">🎨 手工体验 / DIY Workshop</h3>
+            <ul>
+                <li><strong>Baan Kang Wat 艺术村</strong>：陶艺、扎染、银饰制作，多个工作室可选</li>
+                <li><strong>Siam Celadon</strong>：青瓷制作体验</li>
+                <li><strong>Pansawan</strong>：手工皮具体验</li>
+                <li><strong>Thai Farm Cooking School</strong>：不只是烹饪，部分含手工环节</li>
+            </ul>
+        </div>
+
+        <div class="notes-section" style="background: #fff8e1; border-left-color: #ffc107;">
+            <h3 style="color: #ff8f00;">🐘 大象体验 / Elephant Experience</h3>
+            <ul>
+                <li><strong>Elephant Nature Park</strong>：最知名的救援大象保护营，无骑行，喂食、洗澡、观察（需提前预约）</li>
+                <li><strong>Elephant Jungle Sanctuary</strong>：无骑行，与大象互动、泥浆浴</li>
+                <li><strong>Into the Wild Elephant Camp</strong>：小型家庭式，深度体验</li>
+                <li><strong>Burm and Emily's Elephant Sanctuary</strong>：私人体验，人数限制</li>
+                <li>⚠️ <strong>不推荐骑大象</strong>：对大象脊椎有伤害，训练过程残忍</li>
+                <li>✅ 推荐活动：喂食、泥浆浴、河边洗澡、丛林散步</li>
+                <li>📍 位置：湄登区/湄林区，车程约1-1.5小时</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>行程表更新时间：2026年3月22日</p>
+            <p>数据来源：QQ邮箱最新确认邮件 + 当地推荐</p>
+        </div>
+    </div>
+</body>
+</html>
